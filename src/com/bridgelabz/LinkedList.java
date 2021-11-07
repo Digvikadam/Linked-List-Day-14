@@ -88,6 +88,32 @@ public class LinkedList {
 			size--;
 		}
 	}
+	//search method
+	public void searchValue(int val) {
+		int index = 0 ;
+		boolean status = false ;
+		Node temp ;
+		if(head == null) {
+			System.out.println("List is empty");
+		}
+		else {
+			temp = head ;
+			while(temp != null) {
+				if(temp.getData() == val) {
+					status = true ;
+					break;
+				}
+				index++;
+				temp = temp.getNext();
+			}
+			if(status == true) {
+				System.out.println("the elemnt "+val+" is present at index number "+index);
+			}
+			else {
+				System.out.println("element is not present in the list");
+			}
+		}
+	}
 
 
 	// display method
@@ -117,9 +143,9 @@ public class LinkedList {
 
 		//displaying the added data in node
 		list.display();
-		System.out.println("after deleting first element in linked list");
-		list.popAtLast();
-		list.display(); 
+
+		//searching 
+		list.searchValue(70);
 	}
 
 }
