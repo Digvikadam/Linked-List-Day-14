@@ -1,22 +1,45 @@
 package com.bridgelabz;
 
 public class LinkedList {
-	public static void main(String[] args) {
+	Node head;
+	int size ;
 
-		Node firstNode = new Node(56);
-		Node secondNode = new Node(70);
-		Node thirdNode = new Node(30);
+	// adding method at initial
+	public void addAtFirst(int val) {
+		Node node = new Node(val);
+		node.setData(val);
+		if(head==null) {
+			head=node;	
+		}
+		else
+		{
+			node.setNext(head);
+			head=node;
+		}
+		size++;
+	}
 
-
-		Node head = firstNode;
-		firstNode.setNext(secondNode);
-		secondNode.setNext(thirdNode); 
-		Node tail = thirdNode;
-
-		Node temp = head;
-		while (temp != null) {
-			System.out.println(temp.getData());
+	// display method
+	public void display() {
+		Node temp;
+		temp=head;
+		for(int i=0 ; i<size ; i++)
+		{
+			System.out.println(temp.getData()) ;
 			temp = temp.getNext();
 		}
 	}
+
+	//main method
+	public static void main(String[] args) {
+		// creating reference variable of class linkedlist
+		LinkedList list = new LinkedList() ;
+		//adding data in nodes
+		list.addAtFirst(70);
+		list.addAtFirst(30);
+		list.addAtFirst(56);
+		//displaying the added data in node
+		list.display();
+	}
+
 }
