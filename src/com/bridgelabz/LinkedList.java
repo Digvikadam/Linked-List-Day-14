@@ -102,7 +102,7 @@ public class LinkedList {
 		temp.setNext(node);
 		size++;
 	}
- 
+
 	//method to delete  given value 
 	public void deleteGivenValue(int value) {
 		Node preTemp , temp;
@@ -115,7 +115,7 @@ public class LinkedList {
 			preTemp = preTemp.getNext();
 		}
 		while(preTemp.getData() == value);
-		
+
 		preTemp.setNext(temp.getNext());
 		size--;
 	}
@@ -147,6 +147,26 @@ public class LinkedList {
 		}
 	}
 
+	//sorting
+	public void sort() {
+		Node initialStart = head, index = null;
+		if (head == null) {
+			System.out.println("List is empty");
+			return;
+		}
+		while (initialStart != null) {
+			index = initialStart.getNext();
+			while (index != null) {
+				if (initialStart.getData() > index.getData()) {
+					int temp = initialStart.getData();
+					initialStart.setData(index.getData()); 
+					index.setData(temp);
+				}
+				index = index.getNext();
+			}
+			initialStart = initialStart.getNext();
+		}
+	}
 
 	// display method
 	public void display() {
@@ -157,30 +177,5 @@ public class LinkedList {
 			System.out.println(temp.getData()) ;
 			temp = temp.getNext();
 		}
-	}
-
-	//main method
-	public static void main(String[] args) {
-		// creating reference variable of class linkedlist
-		LinkedList list = new LinkedList() ;
-
-		//adding data in nodes at first
-		list.addAtFirst(56);
-
-		//adding data in nodes at last
-		list.appendAtLast(70);
-
-		//adding data in node at a position 2
-		list.insertAtPos(2,30);
-
-		//adding the next value after 30 and before 70
-		list.addAfterGivenValue(30, 40);
-
-		//displaying the added data in node
-		list.display();
-		
-		list.deleteGivenValue(40);
-		System.out.println("after deletion");
-		list.display();
 	}
 }
