@@ -1,7 +1,7 @@
 package com.bridgelabz;
 
 public class LinkedList {
-	Node head;
+	Node head ,tail;
 	int size ;
 
 	// adding method at initial
@@ -19,6 +19,26 @@ public class LinkedList {
 		size++;
 	}
 
+	// append at last method
+	public void appendAtLast(int val) {
+		Node node = new Node(val);
+		node.setData(val);
+		if(head == null) {
+			head = node ;
+			tail = node ;
+		}
+		else {
+			tail=head;
+			while(tail.getNext() != null) {
+				tail=tail.getNext();
+			}
+			tail.setNext(node);
+		}
+
+		size++;
+	}
+
+
 	// display method
 	public void display() {
 		Node temp;
@@ -34,12 +54,13 @@ public class LinkedList {
 	public static void main(String[] args) {
 		// creating reference variable of class linkedlist
 		LinkedList list = new LinkedList() ;
-		//adding data in nodes
-		list.addAtFirst(70);
-		list.addAtFirst(30);
-		list.addAtFirst(56);
+
+		//adding data in nodes at last
+		list.appendAtLast(56);
+		list.appendAtLast(30);
+		list.appendAtLast(70);
+
 		//displaying the added data in node
 		list.display();
 	}
-
 }
