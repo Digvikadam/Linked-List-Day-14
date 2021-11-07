@@ -102,6 +102,23 @@ public class LinkedList {
 		temp.setNext(node);
 		size++;
 	}
+ 
+	//method to delete  given value 
+	public void deleteGivenValue(int value) {
+		Node preTemp , temp;
+		temp = head;
+		while(temp.getData() != value) {
+			temp = temp.getNext();
+		}
+		preTemp = head;
+		do {
+			preTemp = preTemp.getNext();
+		}
+		while(preTemp.getData() == value);
+		
+		preTemp.setNext(temp.getNext());
+		size--;
+	}
 
 	//search method
 	public void searchValue(int val) {
@@ -156,12 +173,14 @@ public class LinkedList {
 		//adding data in node at a position 2
 		list.insertAtPos(2,30);
 
+		//adding the next value after 30 and before 70
 		list.addAfterGivenValue(30, 40);
 
 		//displaying the added data in node
 		list.display();
-
-		//searching 
-		list.searchValue(70);
+		
+		list.deleteGivenValue(40);
+		System.out.println("after deletion");
+		list.display();
 	}
 }
