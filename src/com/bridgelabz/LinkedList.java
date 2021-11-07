@@ -37,7 +37,7 @@ public class LinkedList {
 
 		size++;
 	}
-	
+
 	// Insert At A position method
 	public void insertAtPos(int pos , int val) {
 		if(pos == 1) {
@@ -60,6 +60,35 @@ public class LinkedList {
 		size++ ;
 	}
 
+	// delete at first method
+	public void popAtFirst() {
+		Node temp;
+		temp=head;
+		temp=temp.getNext();
+		head = temp;
+		size--;
+	}
+
+	// delete at last method
+	public void popAtLast() {
+		if(head == null) {
+			System.out.println("list is empty");
+		}
+		else if (size == 1) {
+			head = null;
+			size--;
+		}
+		else {
+			Node temp;
+			temp=head;
+			for(int i= 1 ; i < size-1;i++) {
+				temp=temp.getNext();
+			}
+			temp.setNext(null);
+			size--;
+		}
+	}
+
 
 	// display method
 	public void display() {
@@ -76,17 +105,21 @@ public class LinkedList {
 	public static void main(String[] args) {
 		// creating reference variable of class linkedlist
 		LinkedList list = new LinkedList() ;
-		
+
 		//adding data in nodes at first
 		list.addAtFirst(56);
-		
+
 		//adding data in nodes at last
 		list.appendAtLast(70);
-		
+
 		//adding data in node at a position 2
 		list.insertAtPos(2,30);
 
 		//displaying the added data in node
 		list.display();
+		System.out.println("after deleting first element in linked list");
+		list.popAtLast();
+		list.display(); 
 	}
+
 }
